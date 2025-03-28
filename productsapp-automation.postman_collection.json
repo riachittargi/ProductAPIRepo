@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "279e3f6d-9b80-4ac3-b446-5b5984bbba16",
+		"name": "productsapp-automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37983746"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response into a variable\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// Test that the response status code is 200 OK\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test that the response is an array with 3 products\r",
+							"pm.test(\"Response contains 3 products\", function () {\r",
+							"    pm.expect(jsonData).to.be.an('array');\r",
+							"    pm.expect(jsonData.length).to.equal(3);\r",
+							"});\r",
+							"\r",
+							"// Test the first product (Tomato Soup)\r",
+							"pm.test(\"First product has Id 1\", function () {\r",
+							"    pm.expect(jsonData[0].Id).to.equal(1);\r",
+							"});\r",
+							"pm.test(\"First product has Name 'Tomato Soup'\", function () {\r",
+							"    pm.expect(jsonData[0].Name).to.equal(\"Tomato Soup\");\r",
+							"});\r",
+							"pm.test(\"First product has Category 'Groceries'\", function () {\r",
+							"    pm.expect(jsonData[0].Category).to.equal(\"Groceries\");\r",
+							"});\r",
+							"pm.test(\"First product has Price 1.0\", function () {\r",
+							"    pm.expect(jsonData[0].Price).to.equal(1.0);\r",
+							"});\r",
+							"\r",
+							"// Test the second product (Yo-yo)\r",
+							"pm.test(\"Second product has Id 2\", function () {\r",
+							"    pm.expect(jsonData[1].Id).to.equal(2);\r",
+							"});\r",
+							"pm.test(\"Second product has Name 'Yo-yo'\", function () {\r",
+							"    pm.expect(jsonData[1].Name).to.equal(\"Yo-yo\");\r",
+							"});\r",
+							"pm.test(\"Second product has Category 'Toys'\", function () {\r",
+							"    pm.expect(jsonData[1].Category).to.equal(\"Toys\");\r",
+							"});\r",
+							"pm.test(\"Second product has Price 3.75\", function () {\r",
+							"    pm.expect(jsonData[1].Price).to.equal(3.75);\r",
+							"});\r",
+							"\r",
+							"// Test the third product (Hammer)\r",
+							"pm.test(\"Third product has Id 3\", function () {\r",
+							"    pm.expect(jsonData[2].Id).to.equal(3);\r",
+							"});\r",
+							"pm.test(\"Third product has Name 'Hammer'\", function () {\r",
+							"    pm.expect(jsonData[2].Name).to.equal(\"Hammer\");\r",
+							"});\r",
+							"pm.test(\"Third product has Category 'Hardware'\", function () {\r",
+							"    pm.expect(jsonData[2].Category).to.equal(\"Hardware\");\r",
+							"});\r",
+							"pm.test(\"Third product has Price 16.99\", function () {\r",
+							"    pm.expect(jsonData[2].Price).to.equal(16.99);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response into an object\r",
+							"var product = pm.response.json();\r",
+							"\r",
+							"// Test that the response status code is 200 OK\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test that the returned product has the correct Id\r",
+							"pm.test(\"Product Id is 1\", function () {\r",
+							"    pm.expect(product.Id).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"// Test that the returned product has the correct Name\r",
+							"pm.test(\"Product Name is 'Tomato Soup'\", function () {\r",
+							"    pm.expect(product.Name).to.equal(\"Tomato Soup\");\r",
+							"});\r",
+							"\r",
+							"// Test that the returned product has the correct Category\r",
+							"pm.test(\"Product Category is 'Groceries'\", function () {\r",
+							"    pm.expect(product.Category).to.equal(\"Groceries\");\r",
+							"});\r",
+							"\r",
+							"// Test that the returned product has the correct Price\r",
+							"pm.test(\"Product Price is 1.0\", function () {\r",
+							"    pm.expect(product.Price).to.equal(1.0);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/api/products/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
