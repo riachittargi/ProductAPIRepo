@@ -11,11 +11,12 @@ namespace Lab9.Controllers
     public class ProductsController : ApiController
     {
         Product[] products = new Product[]
-        {
-            new Product { Id = 1, Name = "Cheddar Soup", Category = "Soup", Price = 4 },
-            new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
-            new Product { Id = 3, Name = "Coffee", Category = "Drinks", Price = 15.36M }
-        };
+ {
+    new Product { Id = 1, Name = "Cheddar Soup", Category = "Soup", Price = 4 },
+    new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
+    new Product { Id = 3, Name = "Coffee", Category = "Drinks", Price = 15.36M }
+ };
+
         public ProductsController()
         {
         }
